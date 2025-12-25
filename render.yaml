@@ -1,0 +1,25 @@
+version: 1
+services:
+  - type: web
+    name: lectora-server
+    env: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: MAX_FILE_SIZE
+        value: 10485760
+      - key: UPLOAD_PATH
+        value: ./uploads
+
+databases:
+  - name: lectora-db
+    databaseName: lectora
+    user: lectora
